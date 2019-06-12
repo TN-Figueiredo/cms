@@ -1,23 +1,13 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-export default class Example extends Component {
-    render() {
-        return (
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <div className="card-header">Example Component</div>
+const App = () => {
+    return (
+        <Switch>
+            <Route path="/dashboard" render={() => <h1>Dashboard</h1>} />
+            <Route path="/" render={() => <h1>/</h1>} />
+        </Switch>
+    );
+};
 
-                            <div className="card-body">I'm an example component!</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-
-ReactDOM.render(<Example />, document.getElementById('app'));
+export default App;
