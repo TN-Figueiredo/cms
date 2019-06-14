@@ -1,12 +1,21 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
+// Components
+import Layout from "../hoc/Layout/Layout";
+import Dashboard from "../containers/Dashboard/Dashboard";
+
 const App = () => {
-    return (
+    let routes = (
         <Switch>
-            <Route path="/dashboard" render={() => <h1>Dashboard</h1>} />
-            <Route path="/" render={() => <h1>/</h1>} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/" component={Main} />
         </Switch>
+    );
+    return (
+        <div className="App">
+            <Layout>{routes}</Layout>
+        </div>
     );
 };
 
