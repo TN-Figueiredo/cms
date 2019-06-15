@@ -1,5 +1,5 @@
 export {
-    fetchArticles
+    fetchAllArticles
 } from "./article.actions";
 
 export {
