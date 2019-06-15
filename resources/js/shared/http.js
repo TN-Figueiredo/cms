@@ -14,7 +14,7 @@ axios.interceptors.response.use(null, error => {
 })
 
 const http = axios.create({
-    baseURL: process.env.MIX_APP_URL + "/api"
+    baseURL: "http://cms.com/api"
 })
 
 export default {

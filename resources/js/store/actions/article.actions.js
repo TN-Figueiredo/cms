@@ -15,10 +15,11 @@ export const fetchAllArticles = () => {
             console.log(error);
             return dispatch({ type: actionTypes.GET_ALL_ARTICLES_ERROR });
         }
-        console.log(response);
         return dispatch({
             type: actionTypes.GET_ALL_ARTICLES,
-            article: response.data
+            article: response.data.data,
+            links: response.data.links,
+            meta: response.data.meta
         });
     };
 };

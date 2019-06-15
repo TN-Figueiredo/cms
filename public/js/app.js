@@ -69221,7 +69221,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var apiEndpoint = "/article";
 var getAllArticles = function getAllArticles() {
-  return _shared_http__WEBPACK_IMPORTED_MODULE_0__["default"].post("".concat(apiEndpoint));
+  return _shared_http__WEBPACK_IMPORTED_MODULE_0__["default"].get("".concat(apiEndpoint + "s"));
 };
 
 /***/ }),
@@ -70066,7 +70066,7 @@ axios__WEBPACK_IMPORTED_MODULE_0___default.a.interceptors.response.use(null, fun
   return Promise.reject(error);
 });
 var http = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: "http://localhost" + "/api"
+  baseURL: "http://cms.com/api"
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
   get: http.get,
@@ -70195,13 +70195,14 @@ var fetchAllArticles = function fetchAllArticles() {
                 }));
 
               case 10:
-                console.log(response);
                 return _context.abrupt("return", dispatch({
                   type: _actionTypes__WEBPACK_IMPORTED_MODULE_2__["GET_ALL_ARTICLES"],
-                  article: response.data
+                  article: response.data.data,
+                  links: response.data.links,
+                  meta: response.data.meta
                 }));
 
-              case 12:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -70272,11 +70273,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var initialState = {
-  id: null,
-  title: null,
-  body: null,
-  loading: false,
-  created_at: null,
+  article: null,
+  links: null,
+  meta: null,
   error: false
 };
 
@@ -70287,7 +70286,9 @@ var reducer = function reducer() {
   switch (action.type) {
     case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["GET_ALL_ARTICLES"]:
       return Object(_shared_utility__WEBPACK_IMPORTED_MODULE_1__["updateObject"])(state, {
-        loading: true
+        article: action.article,
+        links: action.links,
+        meta: action.meta
       });
 
     case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["GET_ALL_ARTICLES_ERROR"]:

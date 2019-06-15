@@ -1,8 +1,8 @@
 // Http Requests
 import http from "../shared/http";
 
-const apiEndpoint = "/article"
+const apiEndpoint = "/article";
 
 export const getAllArticles = () => {
-    return http.post(`${apiEndpoint}`)
-}
+    return http.get(`${apiEndpoint + "s"}`);
+};
