@@ -1,6 +1,6 @@
 import * as actionsTypes from "./actionTypes";
 
-export const fetchPosts = () => {
+export const fetchArticles = () => {
     return {
         type: actionsTypes.FETCH_NEWS
     }

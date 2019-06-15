@@ -7,7 +7,6 @@ import Logo from "../../Logo/Logo";
 import "./Navbar.css";
 
 const Navbar = props => {
-  console.log(props);
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">

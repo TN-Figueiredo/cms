@@ -1,7 +1,7 @@
 export {
-    fetchPosts
-} from "./posts";
+    fetchArticles
+} from "./article.actions";
 
 export {
     authStart
-} from "./auth";
+} from "./auth.actions";

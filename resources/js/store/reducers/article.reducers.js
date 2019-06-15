@@ -6,7 +6,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case actionTypes.FETCH_NEWS:
+        case actionTypes.GET_ALL_ARTICLES:
             // TODO
             return state;
         default:

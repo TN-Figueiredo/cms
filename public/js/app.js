@@ -68552,7 +68552,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _hoc_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hoc/Layout/Layout */ "./resources/js/hoc/Layout/Layout.js");
-/* harmony import */ var _containers_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../containers/Dashboard/Dashboard */ "./resources/js/containers/Dashboard/Dashboard.js");
+/* harmony import */ var _containers_Dashboard_Dashboard_containers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../containers/Dashboard/Dashboard.containers */ "./resources/js/containers/Dashboard/Dashboard.containers.js");
 
  // Components
 
@@ -68562,7 +68562,7 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   var routes = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/dashboard",
-    component: _containers_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _containers_Dashboard_Dashboard_containers__WEBPACK_IMPORTED_MODULE_3__["default"]
   }));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "App"
@@ -68872,7 +68872,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Navbar = function Navbar(props) {
-  console.log(props);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-expand-lg"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -69041,40 +69040,10 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
-/***/ "./resources/js/containers/Dashboard/Dashboard.css":
-/*!*********************************************************!*\
-  !*** ./resources/js/containers/Dashboard/Dashboard.css ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./Dashboard.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/containers/Dashboard/Dashboard.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./resources/js/containers/Dashboard/Dashboard.js":
-/*!********************************************************!*\
-  !*** ./resources/js/containers/Dashboard/Dashboard.js ***!
-  \********************************************************/
+/***/ "./resources/js/containers/Dashboard/Dashboard.containers.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/containers/Dashboard/Dashboard.containers.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -69138,6 +69107,36 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Dashboard);
+
+/***/ }),
+
+/***/ "./resources/js/containers/Dashboard/Dashboard.css":
+/*!*********************************************************!*\
+  !*** ./resources/js/containers/Dashboard/Dashboard.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./Dashboard.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/containers/Dashboard/Dashboard.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -69210,7 +69209,6 @@ function (_Component) {
   _createClass(Layout, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      // console.log(this.props.location.pathname.split("/"));
       if (this.props.location.pathname.split("/")[1] === "dashboard") {
         this.setState(function (prevState) {
           return {
@@ -69226,13 +69224,11 @@ function (_Component) {
   }, {
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log(this.props.location.pathname.split("/")[1] === "dashboard");
       return this.props.location.pathname.split("/")[1] === "dashboard";
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state.dashboard);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Navigation_Navbar_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], {
         dashboard: this.state.dashboard,
         updateDashboard: this.onClickDashboard
@@ -69299,23 +69295,55 @@ var checkValidity = function checkValidity(value, rules) {
 /*!***************************************************!*\
   !*** ./resources/js/store/actions/actionTypes.js ***!
   \***************************************************/
-/*! exports provided: FETCH_NEWS, AUTH_START */
+/*! exports provided: AUTH_START, GET_ALL_ARTICLES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_NEWS", function() { return FETCH_NEWS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTH_START", function() { return AUTH_START; });
-var FETCH_NEWS = "FETCH_NEWS"; // Auth
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ALL_ARTICLES", function() { return GET_ALL_ARTICLES; });
+// Auth
+var AUTH_START = "AUTH_START"; // Articles
 
-var AUTH_START = "AUTH_START";
+var GET_ALL_ARTICLES = "GET_ALL_ARTICLES";
 
 /***/ }),
 
-/***/ "./resources/js/store/reducers/auth.js":
-/*!*********************************************!*\
-  !*** ./resources/js/store/reducers/auth.js ***!
-  \*********************************************/
+/***/ "./resources/js/store/reducers/article.reducers.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/store/reducers/article.reducers.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/actionTypes */ "./resources/js/store/actions/actionTypes.js");
+
+var initialState = {};
+
+var reducer = function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["GET_ALL_ARTICLES"]:
+      // TODO
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (reducer);
+
+/***/ }),
+
+/***/ "./resources/js/store/reducers/auth.reducers.js":
+/*!******************************************************!*\
+  !*** ./resources/js/store/reducers/auth.reducers.js ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -69361,12 +69389,15 @@ var reducer = function reducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rootReducer", function() { return rootReducer; });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _reducers_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/auth */ "./resources/js/store/reducers/auth.js");
+/* harmony import */ var _reducers_auth_reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/auth.reducers */ "./resources/js/store/reducers/auth.reducers.js");
+/* harmony import */ var _reducers_article_reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers/article.reducers */ "./resources/js/store/reducers/article.reducers.js");
  // Reducers
 
 
+
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  auth: _reducers_auth__WEBPACK_IMPORTED_MODULE_1__["default"]
+  auth: _reducers_auth_reducers__WEBPACK_IMPORTED_MODULE_1__["default"],
+  article: _reducers_article_reducers__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 
 /***/ }),

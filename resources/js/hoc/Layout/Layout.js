@@ -10,7 +10,6 @@ class Layout extends Component {
     dashboard: false
   };
   componentWillMount() {
-    // console.log(this.props.location.pathname.split("/"));
     if (this.props.location.pathname.split("/")[1] === "dashboard") {
       this.setState(prevState => {
         return { dashboard: !prevState.dashboard };
@@ -21,7 +20,6 @@ class Layout extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(this.props.location.pathname.split("/")[1] === "dashboard");
     return this.props.location.pathname.split("/")[1] === "dashboard";
   }
 
@@ -32,7 +30,6 @@ class Layout extends Component {
   }
 
   render() {
-    console.log(this.state.dashboard);
     return (
       <Fragment>
         <Navbar dashboard={this.state.dashboard} updateDashboard={this.onClickDashboard} />
