@@ -5,6 +5,8 @@ import { withRouter } from "react-router";
 import Navbar from "../../components/Navigation/Navbar/Navbar";
 import Header from "../../components/Header/Header";
 
+import "./Layout.css"
+
 class Layout extends Component {
   state = {
     dashboard: false

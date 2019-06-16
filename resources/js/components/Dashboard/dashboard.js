@@ -2,11 +2,11 @@ import React from "react";
 
 const dashboard = () => {
     return (
-        <section id="main">
+        <section id="dashboard">
             <div className="container">
                 <div className="row">
                     <div className="col-md-3">
-                        <div className="list-group marginbottom">
+                        <div className="list-group">
                             <a
                                 href="/dashboard"
                                 className="list-group-item list-group-item-action active main-color-bg"
@@ -77,7 +77,7 @@ const dashboard = () => {
                     </div>
                     {/* TODO */}
                     <div className="col-md-9">
-                        <div className="card marginbottom">
+                        <div className="">
                             <div className="card-header main-color-bg">
                                 Website Overview
                             </div>
