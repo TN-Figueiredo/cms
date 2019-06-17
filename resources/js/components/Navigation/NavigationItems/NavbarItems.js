@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
 import NavigationItem from "./NavigationItem/NavigationItem";
 
-const NavigationItems = props => {
+const NavbarItems = props => {
   let navItems = (
     <Fragment>
       <ul className="navbar-nav mr-auto">
-        <NavigationItem link="/" exact>
+        <NavigationItem link="/" exact classes="nav-link">
           Home
         </NavigationItem>
-        <NavigationItem link="/dashboard" exact>
+        <NavigationItem link="/dashboard" exact classes="nav-link">
           Dashboard
         </NavigationItem>
       </ul>
@@ -30,7 +30,7 @@ const NavigationItems = props => {
     navItems = (
       <Fragment>
         <ul className="navbar-nav mr-auto">
-          <NavigationItem link="/dashboard" exact>
+          <NavigationItem link="/dashboard" exact classes="nav-link">
             Dashboard
           </NavigationItem>
         </ul>
@@ -52,4 +52,4 @@ const NavigationItems = props => {
   return <Fragment>{navItems}</Fragment>;
 };
 
-export default NavigationItems;
+export default NavbarItems;

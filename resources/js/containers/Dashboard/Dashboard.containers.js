@@ -1,25 +1,53 @@
 import React, { Component } from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import { withRouter, Route } from "react-router-dom";
 
 // Components
-import DashboardComponent from "../../components/Dashboard/dashboard";
+import DashboardSidebarItems from "../../components/Navigation/NavigationItems/DashboardSidebarItems";
+import WebsiteOverview from "../../components/Dashboard/WebsiteOverview/WebsiteOverview";
+import Articles from "../../components/Dashboard/Articles/Articles";
 
 // Actions
-import * as actionTypes from "../../store/actions"
+import * as actionTypes from "../../store/actions";
 
 // Styles
-import "./Dashboard.css"
+import "./Dashboard.css";
 
 class Dashboard extends Component {
+    state = {
+        section: null
+    };
     componentWillMount() {
+        console.log(this.props.history.location.hash);
         document.title = "Admin Area | Dashboard";
         this.props.onFetchAllArticles();
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className="Dashboard">
-                <DashboardComponent />
+                <section id="dashboard">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-3">
+                                <DashboardSidebarItems />
+                            </div>
+                            <div className="col-md-9">
+                                <Route
+                                    exact
+                                    path="/dashboard/pages"
+                                    component={Articles}
+                                />
+                                <Route
+                                    exact
+                                    path="/dashboard"
+                                    component={WebsiteOverview}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         );
     }
@@ -29,13 +57,16 @@ const mapStateToProps = ({ auth, article }) => {
     return {
         auth: auth,
         article: article
-    }
-}
+    };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
         onFetchAllArticles: () => dispatch(actionTypes.fetchAllArticles())
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(Dashboard));

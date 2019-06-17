@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationItems from "../NavigationItems/NavigationItems";
+import NavbarItems from "../NavigationItems/NavbarItems";
 import { withRouter } from "react-router-dom";
 
 import Logo from "../../Logo/Logo";
@@ -26,7 +26,7 @@ const Navbar = props => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarsExampleDefault">
-        <NavigationItems dashboard={props.dashboard} classes="navbar-nav mr-auto" />
+        <NavbarItems dashboard={props.dashboard} classes="navbar-nav mr-auto" />
         </div>
       </div>
     </nav>
