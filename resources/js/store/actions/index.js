@@ -1,5 +1,6 @@
 export {
-    fetchAllArticles
+    fetchAllArticles,
+    addNewArticle
 } from "./article.actions";
 
 export {

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import NavigationItem from "./NavigationItem/NavigationItem";
 
-const DashboardSidebarItems = () => {
+const DashboardSidebarItems = ({ articlesMeta }) => {
     let stylesLink = "list-group-item list-group-item-action";
     let stylesSpan = "badge badge-dark float-right m-2";
     return (
@@ -11,13 +11,9 @@ const DashboardSidebarItems = () => {
                 <NavigationItem link="/dashboard" classes={stylesLink + " active main-color-bg"}>
                     <i className="fas fa-cogs" /> Dashboard
                 </NavigationItem>
-                <NavigationItem link="/dashboard/pages" classes={stylesLink}>
-                    <i className="fas fa-list-alt" /> Pages
-                    <span className={stylesSpan}>12</span>
-                </NavigationItem>
-                <NavigationItem link="#posts" classes={stylesLink}>
-                    <i className="fas fa-pen" /> Posts
-                    <span className={stylesSpan}>33</span>
+                <NavigationItem link="/dashboard/articles" classes={stylesLink}>
+                    <i className="fas fa-list-alt" /> Articles
+                    <span className={stylesSpan}>{articlesMeta ? articlesMeta.total : null}</span>
                 </NavigationItem>
                 <NavigationItem link="#users" classes={stylesLink}>
                     <i className="fas fa-user" /> Users

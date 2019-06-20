@@ -24,19 +24,18 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="Dashboard">
                 <section id="dashboard">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-3">
-                                <DashboardSidebarItems />
+                                <DashboardSidebarItems articlesMeta={this.props.article.meta} />
                             </div>
                             <div className="col-md-9">
                                 <Route
                                     exact
-                                    path="/dashboard/pages"
+                                    path="/dashboard/articles"
                                     component={Articles}
                                 />
                                 <Route
