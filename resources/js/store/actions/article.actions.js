@@ -15,6 +15,7 @@ export const fetchAllArticles = () => {
             console.log(error);
             return dispatch({ type: actionTypes.GET_ALL_ARTICLES_ERROR });
         }
+        console.log(response.data.data[0])
         return dispatch({
             type: actionTypes.GET_ALL_ARTICLES_SUCCESS,
             article: response.data.data,
