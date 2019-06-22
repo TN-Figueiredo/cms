@@ -69,7 +69,8 @@ class NewArticle extends Component {
         event.preventDefault();
         this.props.onSubmitNewArticle({
             title: this.state.controls.title.value,
-            body: this.state.controls.body.value
+            body: this.state.controls.body.value,
+            author: 1
         });
     };
     render() {

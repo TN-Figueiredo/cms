@@ -36,6 +36,7 @@ class ArticleController extends Controller
         $article->id = $request->input('article_id');
         $article->title = $request->input('title');
         $article->body = $request->input('body');
+        $article->author = $request->input('author');
 
         if($article->save()) {
             return new ArticleResource($article);
