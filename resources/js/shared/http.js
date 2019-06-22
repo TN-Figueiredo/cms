@@ -14,7 +14,7 @@ axios.interceptors.response.use(null, error => {
 })
 
 const http = axios.create({
-    baseURL: "http://cms.test/api"
+    baseURL: "http://localhost:3000/api"
 })
 
 export default {
