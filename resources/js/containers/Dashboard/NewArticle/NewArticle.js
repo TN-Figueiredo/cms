@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 // Components
 import Input from "../../../components/UI/Input/Input";
-import Button from "../../../components/UI/Button/Button";
+import Button from "../../../components//UI/Button/Button";
 
 // Actions
 import * as actionTypes from "../../../store/actions/index";

@@ -19,8 +19,6 @@ class ArticleController extends Controller
         // Get Articles
         $articles = Article::paginate(15);
 
-        echo $articles;
-
         // Return collection of articles as resource
         return ArticleResource::collection($articles);
     }

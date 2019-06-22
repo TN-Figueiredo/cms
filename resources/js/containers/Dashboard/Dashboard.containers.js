@@ -18,6 +18,7 @@ class Dashboard extends Component {
         section: null
     };
     componentWillMount() {
+        console.log(this.props.history.location.hash);
         document.title = "Admin Area | Dashboard";
         this.props.onFetchAllArticles();
     }
