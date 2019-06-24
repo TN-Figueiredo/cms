@@ -15,16 +15,16 @@ Route::group([
 });
 
 // List Articles
-Route::get('articles', 'ArticleController@index');
+Route::get('articles', 'Articles\ArticleController@index');
 
 // List Single Article
-Route::get('article/{id}', 'ArticleController@show');
+Route::get('article/{id}', 'Articles\ArticleController@show');
 
 // Create New Article
-Route::post('article', 'ArticleController@store');
+Route::post('article', 'Articles\ArticleController@store');
 
 // Update Article
-Route::put('article', 'ArticleController@store');
+Route::put('article', 'Articles\ArticleController@store');
 
 // Delete Article
-Route::delete('article/{id}', 'ArticleController@destroy');
+Route::delete('article/{id}', 'Articles\ArticleController@destroy');
