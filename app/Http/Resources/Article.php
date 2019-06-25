@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Category;
 use App\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,10 +22,13 @@ class Article extends JsonResource
         return [
             'id' => $this->id,
             'author' => User::findOrFail($this->user_id)->only('name', 'username'),
+            'category' => Category::findOrFail($this->category_id)->only('category'),
             'title' => $this->title,
             'body' => $this->body,
             'image' => $this->image,
-            'posted_at' => $this->posted_at
+            'posted_at' => $this->posted_at,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 
