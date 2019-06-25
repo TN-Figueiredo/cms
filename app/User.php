@@ -58,7 +58,7 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function posts() {
-        return $this->hasMany(Article::class);
+    public function articles() {
+        return $this->hasMany(Article::class)->orderBy('posted_at', 'DESC');
     }
 }
