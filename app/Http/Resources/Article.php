@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Article extends JsonResource
@@ -14,14 +15,17 @@ class Article extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+//        return parent::toArray($request);
 
 //        Usage Example
-//        return [
-//            'id' => $this->id,
-//            'title' => $this->title,
-//            'body' => $this->body
-//        ];
+        return [
+            'id' => $this->id,
+            'author' => User::findOrFail($this->user_id)->only('name', 'username'),
+            'title' => $this->title,
+            'body' => $this->body,
+            'image' => $this->image,
+            'posted_at' => $this->posted_at
+        ];
     }
 
 //    public function with($request) {

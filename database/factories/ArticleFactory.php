@@ -2,12 +2,16 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Model;
+use App\Models\Article;
 use Faker\Generator as Faker;
 
-$factory->define(App\Article::class, function (Faker $faker) {
+$factory->define(Article::class, function (Faker $faker) {
     return [
+        'user_id' => 1,
+        'category_id' => 1,
         'title' => $faker->text(50),
-        'body' => $faker->text(200)
+        'body' => $faker->text(200),
+        'image' => "",
+        'posted_at' => "2019-06-22"
     ];
 });

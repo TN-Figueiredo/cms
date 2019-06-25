@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Article;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Article::class, 30)->create();
+        factory(Article::class, 30)->create();
     }
 }
