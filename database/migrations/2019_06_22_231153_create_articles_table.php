@@ -20,8 +20,9 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('image');
-            $table->date('posted_at');
+            $table->timestamp('posted_at');
             $table->timestamps();
+            $table->boolean('isActive');
             
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');

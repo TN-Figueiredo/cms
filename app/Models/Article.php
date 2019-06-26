@@ -8,7 +8,8 @@ use App\User;
 class Article extends Model
 {
 
-    protected $fillable = ['article_id', 'user_id', 'title', 'body'];
+    protected $guarded = [];
+    // protected $fillable = ['article_id', 'user_id', 'title', 'body'];
 
     // Article's Author
     public function user() {

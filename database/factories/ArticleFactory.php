@@ -12,6 +12,7 @@ $factory->define(Article::class, function (Faker $faker) {
         'title' => $faker->text(50),
         'body' => $faker->text(200),
         'image' => "",
-        'posted_at' => "2019-06-22"
+        'posted_at' => $faker->dateTime,
+        'isActive' => true
     ];
 });
