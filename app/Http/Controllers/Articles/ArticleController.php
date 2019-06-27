@@ -34,10 +34,13 @@ class ArticleController extends Controller
     {
         $article = $request->isMethod('put') ? Article::findOrFail($request->article_id) : new Article;
 
-        $article->id = $request->input('article_id');
+        $article->user_id = $request->input('user_id');
+        $article->category_id = $request->input('category_id');
         $article->title = $request->input('title');
         $article->body = $request->input('body');
         $article->author = $request->input('author');
+        $article->image = $request->input('image');
+        $article->isActive = $request->input('isActive');
 
         if($article->save()) {
             return new ArticleResource($article);
