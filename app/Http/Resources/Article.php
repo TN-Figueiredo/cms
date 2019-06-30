@@ -29,6 +29,7 @@ class Article extends JsonResource
             'posted_at' => $this->posted_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'isActive' => $this->isActive
         ];
     }
 
