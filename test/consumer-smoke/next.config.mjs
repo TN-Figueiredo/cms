@@ -1,1 +1,4 @@
-export default { reactStrictMode: true }
+export default {
+  reactStrictMode: true,
+  transpilePackages: ['@tn-figueiredo/cms'],
+}
