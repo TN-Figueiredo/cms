@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-04-16
+
+### Added
+
+- `<CmsSiteSwitcher>` — org-grouped site-switcher `<select>` for the CMS multi-site
+  chrome. Consumes rows from the `user_accessible_sites` RPC (Sprint 4.75 Track A).
+  Returns null when fewer than 2 sites are accessible. Exported from the main barrel.
+- `<SubmitForReviewButton>` — reporter-facing action that flips a post from `draft` →
+  `pending_review` via a consumer-provided `onSubmit(postId)` callback. Disables during
+  the in-flight request; catches rejections internally to avoid unhandled-rejection
+  noise.
+- `<ReviewQueue>` — editor+ inbox rendering `pending_review` posts with Approve /
+  Reject actions. Rejection opens `window.prompt` for a reason; skipped on cancel or
+  empty input. Default copy pt-BR; date formatting and class names overrideable.
+- `AccessibleSite` type mirrored from the `user_accessible_sites` RPC contract so
+  consumers can adopt the switcher without importing from `@tn-figueiredo/auth-nextjs`.
+- `SiteBranding` type mirrored from `@tn-figueiredo/admin@>=0.6.0` so CMS consumers
+  can flow the per-site branding metadata (login page, chrome) without taking a hard
+  `admin` dependency. Shape is structurally identical by design.
+- `./review` is wired through the main barrel; a standalone `./site-switcher` subpath
+  is not shipped in 0.2.0 — the components are tree-shakeable from the barrel.
+
+### Changed
+
+- **Exits beta.** First stable minor release of `@tn-figueiredo/cms`.
+- Peer dep on `@tn-figueiredo/auth-nextjs` tightened from `>=2.1.1` to `^2.2.0` (Track C).
+  Consumers get the new `requireSiteScope`/`is_member_staff`/`useAccessibleSites` RPC
+  wiring surface when paired with this release, and the `/actions` subpath types keep
+  compatibility with the `<CmsLogin>` family shipped in `0.1.0-beta.4`.
+
 ## [0.1.0-beta.4] - 2026-04-16
 
 ### Changed
@@ -54,7 +84,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `uploadContentAsset()` helper for Supabase Storage uploads.
 - `debug` namespaced loggers exported as `log` (`tn-figueiredo:cms:editor|repo|mdx|ring`).
 
-[unreleased]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.4...HEAD
+[unreleased]: https://github.com/TN-Figueiredo/cms/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.4...v0.2.0
 [0.1.0-beta.4]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.3...v0.1.0-beta.4
 [0.1.0-beta.3]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.2...v0.1.0-beta.3
 [0.1.0-beta.2]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.1...v0.1.0-beta.2
