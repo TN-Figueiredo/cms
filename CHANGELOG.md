@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0-beta.2] - 2026-04-15
+
+### Added
+
+- `@tn-figueiredo/cms/ring` subpath export — Edge-runtime-safe entry point exposing only `SupabaseRingContext`, `IRingContext`, `Organization`, and `Site`. Use this in Next.js middleware instead of the main barrel to avoid pulling in MDX compiler and React editor components.
+
 ## [0.1.0-beta.1] - 2026-04-15
 
 ### Added
@@ -22,5 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `uploadContentAsset()` helper for Supabase Storage uploads.
 - `debug` namespaced loggers exported as `log` (`tn-figueiredo:cms:editor|repo|mdx|ring`).
 
-[unreleased]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.1...HEAD
+[unreleased]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.2...HEAD
+[0.1.0-beta.2]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.1...v0.1.0-beta.2
 [0.1.0-beta.1]: https://github.com/TN-Figueiredo/cms/releases/tag/v0.1.0-beta.1
