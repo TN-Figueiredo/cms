@@ -12,7 +12,14 @@
     "url": "https://github.com/TN-Figueiredo/cms/issues"
   },
   "homepage": "https://github.com/TN-Figueiredo/cms#readme",
-  "keywords": ["cms", "mdx", "nextjs", "supabase", "multi-tenant", "blog"],
+  "keywords": [
+    "cms",
+    "mdx",
+    "nextjs",
+    "supabase",
+    "multi-tenant",
+    "blog"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -31,7 +38,12 @@
       "import": "./dist/ring.js"
     }
   },
-  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "sideEffects": false,
   "engines": {
     "node": ">=20"
@@ -52,14 +64,15 @@
     "zod": "3.23.8"
   },
   "peerDependencies": {
+    "@supabase/supabase-js": "^2.103.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@supabase/supabase-js": "^2.103.0"
+    "react-dom": "^19.0.0"
   },
   "optionalDependencies": {
     "@shikijs/rehype": "3.0.0"
   },
   "devDependencies": {
+    "@supabase/supabase-js": "2.103.0",
     "@testing-library/react": "16.3.2",
     "@types/debug": "4.1.12",
     "@types/react": "19.0.0",
@@ -69,6 +82,6 @@
     "react-dom": "19.0.0",
     "typescript": "5.6.3",
     "vitest": "3.2.4",
-    "@supabase/supabase-js": "2.103.0"
+    "vitest-axe": "^0.1.0"
   }
 }
