@@ -83,3 +83,7 @@ export { useAutosave } from './hooks/use-autosave'
 export type { UseAutosaveOptions, UseAutosaveResult } from './hooks/use-autosave'
 export { getNewDraftId, clearNewDraftId } from './hooks/new-draft-id'
 export { isSafeUrl } from './lib/url'
+
+// ---- Sprint 4.75 Track E: multi-site RBAC UI ----
+export { CmsSiteSwitcher } from './site-switcher'
+export type { CmsSiteSwitcherProps, AccessibleSite } from './site-switcher'
