@@ -127,10 +127,11 @@ export function CmsLogin({
     setError(null)
     const result = await actions.signInWithGoogle({ redirectTo })
     if (!result.ok) {
-      setError(result.error ?? s.errorGeneric)
+      setError(result.error || s.errorGeneric)
       setLoading(false)
       return
     }
+    // Narrow via discriminated union: ok=true branch carries { url: string }
     if (result.url) window.location.href = result.url
   }
 

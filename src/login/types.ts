@@ -1,83 +1,39 @@
-// TODO(phase4-consumer): replace inline types with @tn-figueiredo/auth-nextjs@^2.1.0 import
-// Phase 1 (auth-nextjs 2.1.0) is not yet published to GitHub Packages. Once it ships, the
-// consumer-wiring phase should drop these local interfaces and import the canonical shapes
-// from `@tn-figueiredo/auth-nextjs/actions`, and add `@tn-figueiredo/auth-nextjs` as a peer
-// dependency (>= 2.1.0) in `package.json`.
+// Canonical auth types live in @tn-figueiredo/auth-nextjs/actions (Phase 1 of the
+// admin/cms login package-first split). This package re-exports the 7 shared
+// primitives (action result + inputs + theme/strings atoms) so consumers can
+// type wrapper server actions against the same source of truth.
+//
+// The 3 component-facing prop interfaces (AuthPageProps / ForgotPasswordPageProps /
+// ResetPasswordPageProps) stay cms-local because component-facing action
+// signatures are narrower than the canonical server-action inputs: e.g., a
+// component call site does not know `appUrl` / `resetPath` — the consumer
+// pre-binds those fields in a `'use server'` wrapper and hands a narrower
+// fn to the component.
 
 import type { ReactNode } from 'react'
 
 // ---------------------------------------------------------------------------
-// Minimal action result type (matches @tn-figueiredo/auth-nextjs@2.1.0 shape)
+// Canonical primitives re-exported from @tn-figueiredo/auth-nextjs/actions
 // ---------------------------------------------------------------------------
-export interface ActionResult {
-  ok: boolean
-  error?: string
-  url?: string   // used by signInWithGoogle to return the OAuth redirect URL
-  userId?: string
-}
+export type {
+  ActionResult,
+  SignInPasswordInput,
+  SignInGoogleInput,
+  ForgotPasswordInput,
+  ResetPasswordInput,
+  AuthTheme,
+  AuthStrings,
+} from '@tn-figueiredo/auth-nextjs/actions'
 
-export interface SignInPasswordInput {
-  email: string
-  password: string
-  turnstileToken?: string | null
-}
-
-export interface SignInGoogleInput {
-  redirectTo?: string
-}
-
-export interface ForgotPasswordInput {
-  email: string
-  turnstileToken?: string | null
-}
-
-export interface ResetPasswordInput {
-  password: string
-}
+import type {
+  ActionResult,
+  AuthTheme,
+  AuthStrings,
+} from '@tn-figueiredo/auth-nextjs/actions'
 
 // ---------------------------------------------------------------------------
-// Component prop interfaces — shared contract for all six auth components
-// (admin and cms share the same interface shape; only defaults differ)
+// CMS-specific string sets for the sibling forgot/reset pages
 // ---------------------------------------------------------------------------
-export interface AuthTheme {
-  /** Page background — maps to --auth-bg */
-  bg: string
-  /** Card background — maps to --auth-card-bg */
-  card: string
-  /** Primary action color — maps to --auth-accent */
-  accent: string
-  /** Primary action hover — maps to --auth-accent-hover */
-  accentHover: string
-  /** Primary text — maps to --auth-text */
-  text: string
-  /** Secondary/hint text — maps to --auth-muted */
-  muted: string
-  /** Input and card border — maps to --auth-border */
-  border: string
-}
-
-export interface AuthStrings {
-  title: string
-  subtitle: string
-  signInButton: string
-  googleButton: string
-  googleButtonLoading: string
-  loading: string
-  forgotPasswordLink: string
-  emailLabel: string
-  emailPlaceholder: string
-  passwordLabel: string
-  passwordPlaceholder: string
-  /** aria-label when password is hidden */
-  passwordTogglePassive: string
-  /** aria-label when password is visible */
-  passwordToggleActive: string
-  divider: string
-  errorGeneric: string
-  errorInvalidCredentials: string
-  errorTurnstileLoading: string
-}
-
 export interface ForgotPasswordStrings {
   title: string
   subtitle: string
@@ -111,11 +67,24 @@ export interface ResetPasswordStrings {
   passwordToggleActive: string
 }
 
+// ---------------------------------------------------------------------------
+// Component-facing prop interfaces
+//
+// Action sub-types narrow the canonical server-action inputs: the consumer
+// pre-binds consumer-specific fields (`appUrl`, `resetPath`, `callbackPath`) in
+// a `'use server'` wrapper and exposes narrower fn signatures to the component.
+// ---------------------------------------------------------------------------
 export interface AuthPageProps {
   /** Required: auth actions wired up by consumer page */
   actions: {
-    signInWithPassword: (input: SignInPasswordInput) => Promise<ActionResult>
-    signInWithGoogle: (input: SignInGoogleInput) => Promise<ActionResult>
+    signInWithPassword: (input: {
+      email: string
+      password: string
+      turnstileToken?: string
+    }) => Promise<ActionResult>
+    signInWithGoogle: (input: {
+      redirectTo?: string
+    }) => Promise<ActionResult<{ url: string }>>
   }
   /** Partial override of the locale preset */
   strings?: Partial<AuthStrings>
@@ -139,7 +108,10 @@ export interface AuthPageProps {
 
 export interface ForgotPasswordPageProps {
   actions: {
-    forgotPassword: (input: ForgotPasswordInput) => Promise<ActionResult>
+    forgotPassword: (input: {
+      email: string
+      turnstileToken?: string
+    }) => Promise<ActionResult>
   }
   strings?: Partial<ForgotPasswordStrings>
   locale?: 'pt-BR' | 'en'
@@ -152,7 +124,7 @@ export interface ForgotPasswordPageProps {
 
 export interface ResetPasswordPageProps {
   actions: {
-    resetPassword: (input: ResetPasswordInput) => Promise<ActionResult>
+    resetPassword: (input: { password: string }) => Promise<ActionResult>
   }
   strings?: Partial<ResetPasswordStrings>
   locale?: 'pt-BR' | 'en'
