@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0-beta.4] - 2026-04-16
+
+### Changed
+
+- **Breaking (beta):** `ActionResult` is now a discriminated union — `({ ok: true } & TExtra) | { ok: false; error: string }` — imported from `@tn-figueiredo/auth-nextjs/actions` instead of the flat `{ ok: boolean; error?: string; url?: string }` interface shipped in `0.1.0-beta.3`. Consumers must narrow via `if (result.ok)` before accessing success-branch fields (e.g. `result.url` on the Google OAuth action). The cms login components do this narrowing internally; downstream consumers that mock or consume `ActionResult` directly need the same update.
+- Flipped inline login primitives (`ActionResult`, `SignInPasswordInput`, `SignInGoogleInput`, `ForgotPasswordInput`, `ResetPasswordInput`, `AuthTheme`, `AuthStrings`) in `src/login/types.ts` to re-exports from `@tn-figueiredo/auth-nextjs/actions`. Closes the `TODO(phase4-consumer)` banner introduced in beta.3.
+- `<CmsLogin>` Google OAuth handler narrows `ActionResult<{ url: string }>` before redirecting.
+
+### Added
+
+- `@tn-figueiredo/auth-nextjs` declared as a peer dependency at `>=2.1.1` (first release that ships the `/actions` subpath with the canonical login types).
+
+### Notes
+
+- The component-facing prop interfaces (`AuthPageProps`, `ForgotPasswordPageProps`, `ResetPasswordPageProps`) stay defined locally in this package — their `actions.*` sub-types are intentionally narrower than the canonical server-action inputs because components do not know consumer-specific fields (`appUrl`, `resetPath`, `callbackPath`). Consumers pre-bind those fields in a `'use server'` wrapper and hand the narrower fn to the component; the canonical primitives are available for typing the wrapper itself.
+
 ## [0.1.0-beta.3] - 2026-04-15
 
 ### Added
@@ -38,7 +54,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `uploadContentAsset()` helper for Supabase Storage uploads.
 - `debug` namespaced loggers exported as `log` (`tn-figueiredo:cms:editor|repo|mdx|ring`).
 
-[unreleased]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.3...HEAD
+[unreleased]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.4...HEAD
+[0.1.0-beta.4]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.3...v0.1.0-beta.4
 [0.1.0-beta.3]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.2...v0.1.0-beta.3
 [0.1.0-beta.2]: https://github.com/TN-Figueiredo/cms/compare/v0.1.0-beta.1...v0.1.0-beta.2
 [0.1.0-beta.1]: https://github.com/TN-Figueiredo/cms/releases/tag/v0.1.0-beta.1
