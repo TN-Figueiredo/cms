@@ -1,5 +1,7 @@
 # @tn-figueiredo/cms
 
+[![CI](https://github.com/TN-Figueiredo/cms/actions/workflows/ci.yml/badge.svg)](https://github.com/TN-Figueiredo/cms/actions/workflows/ci.yml) [![Latest release](https://img.shields.io/github/v/tag/TN-Figueiredo/cms?label=latest&color=blue)](https://github.com/TN-Figueiredo/cms/releases)
+
 Reusable Next.js + Supabase CMS with MDX compile-on-save — the `@tn-figueiredo` ecosystem.
 
 ## Install
