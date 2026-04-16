@@ -1,6 +1,6 @@
 {
   "name": "@tn-figueiredo/cms",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.3",
   "description": "Reusable Next.js + Supabase CMS with MDX compile-on-save — the @tn-figueiredo ecosystem",
   "license": "MIT",
   "author": "Thiago Figueiredo <tnfigueiredotv@gmail.com>",
@@ -36,6 +36,10 @@
     "./ring": {
       "types": "./dist/ring.d.ts",
       "import": "./dist/ring.js"
+    },
+    "./login": {
+      "types": "./dist/login.d.ts",
+      "import": "./dist/login.js"
     }
   },
   "files": [
