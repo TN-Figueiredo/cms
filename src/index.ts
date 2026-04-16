@@ -87,3 +87,5 @@ export { isSafeUrl } from './lib/url'
 // ---- Sprint 4.75 Track E: multi-site RBAC UI ----
 export { CmsSiteSwitcher } from './site-switcher'
 export type { CmsSiteSwitcherProps, AccessibleSite } from './site-switcher'
+export { SubmitForReviewButton } from './review'
+export type { SubmitForReviewButtonProps } from './review'
